@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">MyTime2Sallon</string>
+    <string name="title_activity_select_gender">SelectGenderActivity</string>
+    <string name="mts">MTS</string>
+    <string name="men">Men</string>
+    <string name="women">Women</string>
+    <string name="title_activity_select_user_type">SelectUserTypeActivity</string>
+    <string name="stylist">Stylist</string>
+    <string name="customer">Customer</string>
+    <string name="title_activity_login_sign_up">LoginSignUpActivity</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="title_activity_sign_up_stylist">SignUpStylistActivity</string>
+    <string name="title_activity_sign_up_customer">SignUpCustomerActivity</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
