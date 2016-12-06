@@ -48,12 +48,13 @@ public class LoginSignUpActivity extends AppCompatActivity implements RevelInter
     public void signUp(View view) {
         Intent intent=null;
         if(userType.equals(STYLIST)){
-             intent = new Intent(this, MapsActivity.class);
+             intent = new Intent(this, SignUpStylistActivity.class);
 
         }else{
             intent = new Intent(this, SignUpCustomerActivity.class);
 
         }
+        intent.putExtra(GENDER,gender);
         this.startActivity(intent);
 
     }

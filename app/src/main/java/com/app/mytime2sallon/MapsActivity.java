@@ -1,9 +1,14 @@
 package com.app.mytime2sallon;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.app.utility.AppConstants;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -12,11 +17,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener, GoogleMap.OnMarkerDragListener {
 
     private GoogleMap mMap;
     boolean markerClicked;
-    TextView textView;
+    Marker marker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +31,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        textView = (TextView)findViewById(R.id.textView);
     }
 
 
@@ -43,20 +48,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //LatLng sydney = new LatLng(-34, 151);
+        //  mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        //    mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         mMap.setOnMapClickListener(this);
         mMap.setOnMapLongClickListener(this);
         mMap.setOnMarkerDragListener(this);
+        //mMap.setMyLocationEnabled(true);
     }
 
 
     @Override
     public void onMapClick(LatLng latLng) {
-        textView.setText(latLng.toString());
-
-        mMap.addMarker(new MarkerOptions()
+        mMap.clear();
+        marker = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
                 .draggable(true));
 
@@ -65,9 +70,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapLongClick(LatLng latLng) {
-        textView.setText("New marker added@" + latLng.toString());
+        mMap.clear();
 
-        mMap.addMarker(new MarkerOptions()
+        marker = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
                 .draggable(true));
 
@@ -76,17 +81,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMarkerDrag(Marker marker) {
-        textView.setText("Marker " + marker.getId() + " Drag@" + marker.getPosition());
     }
 
     @Override
     public void onMarkerDragEnd(Marker marker) {
-        textView.setText("Marker " + marker.getId() + " DragEnd");
     }
 
     @Override
     public void onMarkerDragStart(Marker marker) {
-        textView.setText("Marker " + marker.getId() + " DragStart");
 
+    }
+
+    public void getMarkerLocation(View view) {
+
+        if (marker == null)
+            return;
+        double latitude = marker.getPosition().latitude;
+        double longitude = marker.getPosition().longitude;
+       // Toast.makeText(this, latitude + "," + longitude, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent();
+        intent.putExtra(AppConstants.LATITUDE,latitude);
+        intent.putExtra(AppConstants.LONGTITUDE,longitude);
+
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }

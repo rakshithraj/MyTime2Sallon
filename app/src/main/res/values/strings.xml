@@ -11,9 +11,22 @@
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="title_activity_sign_in">SignInActivity</string>
-    <string name="enter_name">Enter Name</string>
+    <string name="enter_username">Enter Username</string>
     <string name="enter_password">Enter Password</string>
     <string name="title_activity_sign_up_stylist">SignUpStylistActivity</string>
     <string name="title_activity_sign_up_customer">SignUpCustomerActivity</string>
     <string name="title_activity_maps">Map</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="enter_valid_number">Enter Valid mobile Number</string>
+    <string name="enter_sallonname">Enter Sallon Name</string>
+    <string name="select_city">Select City</string>
+    <string name="select_area">Select Area</string>
+    <string name="select_Colony">Select Colony</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="google_maps_key">AIzaSyBI3WxOWTqvSp-lrfRdMklwAiGk8edizr8</string>
+    <string name="how_to_set_locat">Click on map select your location. your can drag the pinpoint to traget location by long pressing on pinpoint  and drag</string>
+    <string name="set_location">Set Location</string>
+
 </resources>

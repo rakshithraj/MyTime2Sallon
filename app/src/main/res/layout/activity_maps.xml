@@ -4,19 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<fragment
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.app.mytime2sallon.MapsActivity" />
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rlGetLocation"
+        map:cameraTargetLat="23.617395"
+        map:cameraTargetLng="77.536538"
+        map:cameraTilt="30"
+        map:cameraZoom="4"
+        tools:context="com.app.mytime2sallon.MapsActivity" />
+
+
+    <RelativeLayout
+        android:id="@+id/rlGetLocation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="44dp"
-        android:id="@+id/textView" />
+        android:background="@android:color/white"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textColor="@android:color/black"
+            android:text="@string/how_to_set_locat"
+            android:layout_toLeftOf="@+id/setLocation" />
+
+        <Button
+            android:id="@+id/setLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="@color/colorPrimary"
+            android:onClick="getMarkerLocation"
+            android:padding="5dp"
+            android:text="Get Location" />
+    </RelativeLayout>
+
 </RelativeLayout>
